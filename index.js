@@ -20,12 +20,12 @@ for( let i=0;i<myNodelist.length;i++)
       let spbuttonmodel = document.createElement("button");
       spbuttonmodel.textContent= `Generer votre facture`;
       document.getElementsByClassName("total-count")[0].innerHTML = c; 
-      document.getElementsByClassName('modal-footer')[0].appendChild(spbuttonmodel);
+      document.getElementsByClassName('modal-footer')[1].appendChild(spbuttonmodel);
     }
     
     if (document.getElementsByClassName("total-count")[0].textContent==2)
     {
-document.getElementsByClassName("modal-footer")[0].childNodes[3].addEventListener("click",calculersomme);
+document.getElementsByClassName("modal-footer")[1].childNodes[3].addEventListener("click",calculersomme);
     }
     
     ev.target.classList.add('disabled');
@@ -33,13 +33,22 @@ document.getElementsByClassName("modal-footer")[0].childNodes[3].addEventListene
     console.log(ev.target.classList[2]);
  })
 
- 
 }
+
+/* add event lisner at count */
+let evenementtotal = document.getElementById("cole");
+evenementtotal.addEventListener('click', function(ev){
+console.log(ev.target)
+document.getElementsByClassName("total-count")[0].innerHTML = ev.target.childElementCount;
+
+})
 /*addEventListener("click", calculersomme);*/
 /*var myNodelist = document.getElementsByTagName("close");*/
 function suprimer(e){
 	e.parentElement.parentElement.remove();
 }
+
+
 /*getElementsByClassName*/ 
 function calculersomme()
 {
@@ -48,9 +57,10 @@ function calculersomme()
 var sum = 0;
 console.log(all.children.length)
 for (let i = 0; i < all.children.length; i++) {
- let valprix= parseInt(all.children[1].getElementsByTagName('span')[0].textContent);
+  if (all.children[1].getElementsByTagName('span')[0].textContent)
+  {let valprix= parseInt(all.children[1].getElementsByTagName('span')[0].textContent);
   sum = sum + valprix;
-  console.log(all.children[0].getElementsByTagName('span')[0].textContent +" "+ sum);
+  console.log(all.children[i].getElementsByTagName('span')[i].textContent +" "+ sum);}
 }
     
   console.log("bonjour " + all.children[0].tagName);
@@ -58,7 +68,7 @@ let spanmodel = document.createElement("span");
 spanmodel.textContent=`votre facture est ${sum}$`;
 document.getElementById('cole').appendChild(spanmodel);
 }
-if (c < 3)
+if (c <= 3)
 {
   swal("Oops!", "vous n'avez pas atteindre le nombre minimum d'achat!", "error");}}
 function myFunction() {
