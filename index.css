@@ -1,0 +1,35 @@
+.margin{
+
+    margin-bottom: 20px;
+}
+.margin-left{
+
+    margin-left: 30px;
+    margin-bottom: 15px;
+}
+.close
+{
+    position: relative;
+    float: right;
+    background-color: teal;
+}
+.rouge{
+    
+    background-color: transparent;
+    color : red !important;
+    border-color: red;
+}
+
+
+.margin-left  p{
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.margin-left  button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
